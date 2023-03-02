@@ -13,26 +13,15 @@ abe_num = {
     'X': 25, 'Y': 26, 'Z': 27    
 }
 
-# abe_num es un diccionario que nos regresa una lertra dependiendo de un numero entero
-num_abe = {
-    1:  'A', 2:  'B', 3:  'C', 4:  'D',
-    5:  'E', 6:  'F', 7:  'G', 8:  'H',
-    9:  'I', 10: 'J', 11: 'K', 12: 'L',
-    13: 'M', 14: 'N', 15: 'Ñ', 16: 'O',
-    17: 'P', 18: 'Q', 19: 'R', 20: 'S',
-    21: 'T', 22: 'U', 23: 'V', 24: 'W',
-    25: 'X', 26: 'Y', 27: 'Z'    
-}
-
 # abe_bin es un diccionario que nos regrese el arreglo binario de una letra 
-abe_bin = {
-    'A': '00001', 'B': '00010', 'C': '00011', 'D': '00100',
-    'E': '00101', 'F': '00110', 'G': '00111', 'H': '01000',
-    'I': '01001', 'J': '01010', 'K': '01011', 'L': '01100',
-    'M': '01101', 'N': '01110', 'Ñ': '01111', 'O': '10000',
-    'P': '10001', 'Q': '10010', 'R': '10011', 'S': '10100',
-    'T': '10101', 'U': '10110', 'V': '10111', 'W': '11000',
-    'X': '11001', 'Y': '11010', 'Z': '11011'
+num_bin = {
+    1:  '00001', 2:  '00010', 3:  '00011', 4:  '00100',
+    5:  '00101', 6:  '00110', 7:  '00111', 8:  '01000',
+    9:  '01001', 10: '01010', 11: '01011', 12: '01100',
+    13: '01101', 14: '01110', 15: '01111', 16: '10000',
+    17: '10001', 18: '10010', 19: '10011', 20: '10100',
+    21: '10101', 22: '10110', 23: '10111', 24: '11000',
+    25: '11001', 26: '11010', 27: '11011'
 }
 
 # bin_abe es un diccionario que nos regrese una letra dependiendp de un arreglo binario
@@ -63,18 +52,43 @@ lista8Caracteres = ["CRIP", "TOGR", "AFIA", "ESUN", "ACIE", "NCIA"]
     ## Areglo de 4 caracteres
 """
 
-def Sustitucion(ar4Car: str, dic1: dict, dic2: dict):
-    # Declaramos una variable auxiliar que sera un string vacio, en ella agregaremos la cadena tr
-    strAux = ""
-    print(ar4Car)
-    for caracter in ar4Car:
-        valNumCar = dic1[caracter]
-        valNumCar = (valNumCar + 1) % 27
-        valCarNum = dic2[valNumCar]
-        strAux = strAux + valCarNum
-        
-    print(strAux)
-    return strAux
+def Sustitucion(arr4Car: str, dicAbeNum: dict, dicNumBin: dict) -> list:
+    lisAux = []
+    print('*************************************')
+    print(arr4Car)
+    print('*************************************')
+    
+    for elemnt in arr4Car:
+        valNum = dicAbeNum[elemnt]
+        valNumSust = (valNum + 1) % 27
+        valBin = dicNumBin[valNumSust]
+        lisAux.append(valBin)
+    
+    print(lisAux)
+    print('*************************************')
+    return lisAux
 
-lista8Caracteres[1] = Sustitucion(ar4Car=lista8Caracteres[1], dic1=abe_num, dic2=num_abe)
-print(lista8Caracteres)
+def Permutacion(lista: list) -> list:
+    listaAux = []
+    listaAux.append(lista[2])
+    listaAux.append(lista[1])
+    listaAux.append(lista[3])
+    listaAux.append(lista[0])
+    
+    print(listaAux)
+    print('*************************************')
+    return listaAux
+
+          
+F = Permutacion(Sustitucion(arr4Car=lista8Caracteres[1], dicAbeNum=abe_num, dicNumBin=num_bin))
+        
+"""    
+aregloSutituido = Sustitucion(ar4Car=lista8Caracteres[1], dic1=abe_num, dic2=num_abe)
+
+arregloPermuted = Permutacion(aregloSutituido)
+
+posLi = 0
+posKi = 1
+for i in range(2):
+    arregloSutituido = Sustitucion(ar4Car=lista8Caracteres[posKi], dic1=abe_num, dic2=num_abe)
+"""
