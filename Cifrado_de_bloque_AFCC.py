@@ -1,6 +1,6 @@
 """
     # Al inicio del prograa lo que haremos sera definir las variables que usaremos 
-    # En este caso seran 3 diccionarios que nos ayudaran a obtener las equialencias
+    # En este caso seran 4 diccionarios que nos ayudaran a obtener las equivalencias respectivas
 """
 # abe_num es un diccionario que nos regrese el valor en entero dependiendo de la letra
 abe_num = {
@@ -37,11 +37,44 @@ abe_bin = {
 
 # bin_abe es un diccionario que nos regrese una letra dependiendp de un arreglo binario
 bin_abe = {
-    '00001': 'A', '00010': 'B', 3: 'C', 4: 'D',
-    '00101': 'E', '00110': 'F', 7: 'G', 8: 'H',
-    '01001': 'I', '01010': 'J', 11: 'K', 12: 'L',
-    '01101': 'M', '01110': 'N', 15: 'Ñ', 16: 'O',
-    '10001': 'P', '10010': 'Q', 19: 'R', 20: 'S',
-    '10101': 'T', '10110': 'U', 23: 'V', 24: 'W',
-    '11001': 'X', '11010': 'Y', 27: 'Z' 
+    '00001': 'A', '00010': 'B', '00011': 'C', '00100': 'D',
+    '00101': 'E', '00110': 'F', '00111': 'G', '01000': 'H',
+    '01001': 'I', '01010': 'J', '01011': 'K', '01100': 'L',
+    '01101': 'M', '01110': 'N', '01111': 'Ñ', '10000': 'O',
+    '10001': 'P', '10010': 'Q', '10011': 'R', '10100': 'S',
+    '10101': 'T', '10110': 'U', '10111': 'V', '11000': 'W',
+    '11001': 'X', '11010': 'Y', '11011': 'Z' 
 }
+
+"""
+    # Definimos la cadena con la que vamos a trabajar
+    # En este caso la dividiremos en un trosos de 8 caracteres lo cual nos dara 3 cadenas 
+    # Esas a su vez las dividiremos en 2 y asi tendremos 1 lista con 6 arreglo de 4 caracteres
+"""
+
+# Lista 1 con los primeros 8 caracteres 
+lista8Caracteres = ["CRIP", "TOGR", "AFIA", "ESUN", "ACIE", "NCIA"]
+
+"""
+    # Definimos la  funcion que hara el la operacion de sustitucion
+    # Parametro de entrada 
+    ## Areglo de 4 caracteres
+    # Parametro de salida
+    ## Areglo de 4 caracteres
+"""
+
+def Sustitucion(ar4Car: str, dic1: dict, dic2: dict):
+    # Declaramos una variable auxiliar que sera un string vacio, en ella agregaremos la cadena tr
+    strAux = ""
+    print(ar4Car)
+    for caracter in ar4Car:
+        valNumCar = dic1[caracter]
+        valNumCar = (valNumCar + 1) % 27
+        valCarNum = dic2[valNumCar]
+        strAux = strAux + valCarNum
+        
+    print(strAux)
+    return strAux
+
+lista8Caracteres[1] = Sustitucion(ar4Car=lista8Caracteres[1], dic1=abe_num, dic2=num_abe)
+print(lista8Caracteres)
