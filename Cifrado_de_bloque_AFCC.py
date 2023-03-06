@@ -41,7 +41,7 @@ bin_abe = {
     # Esas a su vez las dividiremos en 2 y asi tendremos 1 lista con 6 arreglo de 4 caracteres
 """
 
-# Lista 1 con los primeros 8 caracteres 
+# Lista con el contenido de nuestra texto a cifrar 
 lista8Caracteres = ["CRIP", "TOGR", "AFIA", "ESUN", "ACIE", "NCIA"]
 
 """
@@ -79,14 +79,16 @@ def Sustitucion(arr4Car: str, dicAbeNum: dict, dicNumBin: dict) -> list:
 
 def Permutacion(lista: list) -> list:
     listaAux = []
+    
     listaAux.append(lista[2])
     listaAux.append(lista[1])
     listaAux.append(lista[3])
     listaAux.append(lista[0])
+    
     return listaAux
 
 """
-    # Definimos la funcion que nos permitira saber ka equivalencia de una Caracter a un arreglo binario
+    # Definimos la funcion que nos permitira saber la equivalencia de una Caracter a un arreglo binario
     
     # Parametro de entrada 
     ## String de 4 caracteres
@@ -98,10 +100,12 @@ def Permutacion(lista: list) -> list:
 """
 def ConvertirAbeBin(arreglo: str, dicAbeNum: dict, dicNumBin: dict)-> list:
     listAux = []
+    
     for caracter in arreglo:
         valNum = dicAbeNum[caracter]
         valBin = dicNumBin[valNum]
         listAux.append(valBin)
+    
     return listAux
 
 """
@@ -116,6 +120,7 @@ def ConvertirAbeBin(arreglo: str, dicAbeNum: dict, dicNumBin: dict)-> list:
 """
 def AplicarMod27(strBin: str, dicNumBin: dict) -> str:
     numero_decimal = 0
+    
     for posicion, digito_sting in enumerate(strBin[::-1]):
         numero_decimal += int(digito_sting) * 2 ** posicion
         
@@ -135,6 +140,7 @@ def AplicarMod27(strBin: str, dicNumBin: dict) -> str:
 """
 def ConvertirBinAbe(listArr: list, dicBinAbe: dict) -> str:
     strAbe = ""
+    
     for elemento in listArr:
         strAbe = strAbe + dicBinAbe[elemento]
     
