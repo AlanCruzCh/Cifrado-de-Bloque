@@ -35,14 +35,6 @@ bin_abe = {
     '11001': 'X', '11010': 'Y', '11011': 'Z' 
 }
 
-"""
-    # Definimos la cadena con la que vamos a trabajar
-    # En este caso la dividiremos en un trosos de 8 caracteres lo cual nos dara 3 cadenas 
-    # Esas a su vez las dividiremos en 2 y asi tendremos 1 lista con 6 arreglo de 4 caracteres
-"""
-
-# Lista con el contenido de nuestra texto a cifrar 
-lista8Caracteres = ["CRIP", "TOGR", "AFIA", "ESUN", "ACIE", "NCIA"]
 
 """
     # Definimos la  funcion que hara el la operacion de sustitucion
@@ -120,10 +112,10 @@ def ConvertirAbeBin(arreglo: str, dicAbeNum: dict, dicNumBin: dict)-> list:
 """
 def AplicarMod27(strBin: str, dicNumBin: dict) -> str:
     numero_decimal = 0
-    
+        
     for posicion, digito_sting in enumerate(strBin[::-1]):
         numero_decimal += int(digito_sting) * 2 ** posicion
-        
+
     valor = numero_decimal % 27
     
     return dicNumBin[valor]
@@ -185,6 +177,15 @@ def OperacionOrExclusiva(listaLi: list, listaFRi: list) -> str:
 """
     * Iniciamos el segmento del programa
 """
+"""
+    # Definimos la cadena con la que vamos a trabajar
+    # En este caso la dividiremos en un trosos de 8 caracteres lo cual nos dara 3 cadenas 
+    # Esas a su vez las dividiremos en 2 y asi tendremos 1 lista con 6 arreglo de 4 caracteres
+"""
+
+# Lista con el contenido de nuestra texto a cifrar 
+lista8Caracteres = ["CRIP", "TOGR", "AFIA", "ESUN", "ACIE", "NCIA"]
+
 print("\n***********************************************************")
 print("Texto plano")
 print(lista8Caracteres)
